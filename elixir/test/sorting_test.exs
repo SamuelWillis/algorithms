@@ -1,4 +1,4 @@
-defmodule ElixirImplTest.SortingTest do
+defmodule ElixirImpl.SortingTest do
   use ExUnit.Case, async: true
 
   alias ElixirImpl.Sorting
