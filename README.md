@@ -22,15 +22,6 @@ are similar to the original but smaller in size, solve the subproblems (often
 recursively), and then combine the subproblem solutions to get a solution to the
 original problem.
 
-There are three main steps:
-
-1. __Divide:__ Split the problem into a number of subproblems that are smaller
-   instances of the same problem.
-1. __Conquer:__ Solve the subproblems recursively, or if they are small enough
-   in a straight forward manner.
-1. __Combine:__ Merge the subproblem solutions into a solution for the original
-   problem.
-
 ## Run time analysis
 Running time analysis is typically done on a basic RAM model.
 

@@ -6,6 +6,8 @@ defmodule ElixirImpl.Sorting.MergeSort do
   This implementation avoids using those.
   """
 
+  alias ElixirImpl.ListHelpers
+
   @doc """
   Sort the provided list
   """
@@ -16,27 +18,12 @@ defmodule ElixirImpl.Sorting.MergeSort do
   def sort(list) when is_list(list) do
     middle = div(length(list), 2)
 
-    {left, right} = split(list, middle)
+    {left, right} = ListHelpers.split(list, middle)
     left = sort(left)
     right = sort(right)
 
     merge(left, right)
   end
-
-  defp split(list, count), do: do_split({[], list}, count)
-
-  defp do_split({left, [head | tail]}, count) when 0 < count,
-    do: do_split({[head | left], tail}, count - 1)
-
-  defp do_split({left, right}, 0), do: {reverse(left), right}
-
-  defp do_split({left, []}, _count), do: {reverse(left), []}
-
-  defp reverse(list), do: do_reverse([], list)
-
-  defp do_reverse([], [head | tail]), do: do_reverse([head], tail)
-  defp do_reverse(list, [head | tail]), do: do_reverse([head | list], tail)
-  defp do_reverse(list, []), do: list
 
   defp merge(left, right), do: do_merge([], left, right)
 
@@ -49,5 +36,5 @@ defmodule ElixirImpl.Sorting.MergeSort do
   defp do_merge(merged, [], [rh | rt]), do: do_merge([rh | merged], [], rt)
   defp do_merge(merged, [lh | lt], []), do: do_merge([lh | merged], lt, [])
 
-  defp do_merge(merged, [], []), do: reverse(merged)
+  defp do_merge(merged, [], []), do: ListHelpers.reverse(merged)
 end
