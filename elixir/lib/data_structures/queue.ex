@@ -1,7 +1,6 @@
 defmodule Queue do
   @moduledoc """
   Naive queue implementation.
-  Definitely not performant.
   """
   defstruct elements: []
 
@@ -9,7 +8,7 @@ defmodule Queue do
   Add an item into a queue.
 
   ## Examples
-    iex> Queue.enqueue(%Queue{elements: []}, "one")
+   iex> Queue.enqueue(%Queue{elements: []}, "one")
     %Queue{elements: ["one"]}
 
     iex> Queue.enqueue(%Queue{elements: ["one"]}, "two")
@@ -41,9 +40,7 @@ defmodule Queue do
   # remainder of the elements. Then reverses the remainder to place them back
   # into their correct order
   def dequeue(%__MODULE__{elements: elements}) do
-    [item | elements] =
-      elements
-      |> reverse_elements()
+    [item | elements] = reverse_elements(elements)
 
     {:ok, item,
      %__MODULE__{
