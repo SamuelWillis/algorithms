@@ -3,6 +3,8 @@ defmodule ElixirImpl.Sorting.InsertionSortTest do
 
   alias ElixirImpl.Sorting.InsertionSort
 
+  doctest ElixirImpl.Sorting.InsertionSort
+
   describe "sort/1" do
     test "empty list" do
       assert [] == InsertionSort.sort([])
@@ -10,6 +12,10 @@ defmodule ElixirImpl.Sorting.InsertionSortTest do
 
     test "single element list" do
       assert [1] == InsertionSort.sort([1])
+    end
+
+    test "two element list" do
+      assert [1, 2] == InsertionSort.sort([2, 1])
     end
 
     test "unsorted arrays" do
