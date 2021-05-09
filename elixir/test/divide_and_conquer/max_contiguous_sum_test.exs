@@ -30,7 +30,7 @@ defmodule ElixirImpl.DivideAndConquer.MaxContiguousSumTest do
     end
 
     test "randomized tests" do
-      for i <- 0..50 do
+      for _i <- 0..50 do
         left_list = for _i <- 0..Enum.random(0..10), do: -1
         right_list = for _i <- 0..Enum.random(0..10), do: -1
 
