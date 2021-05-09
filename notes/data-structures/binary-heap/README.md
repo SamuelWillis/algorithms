@@ -42,10 +42,10 @@ the node's parent, left-child, and right-child indices is simple.
 PARENT(i):
   return floor(i/2)
 
-LEFT-CHILD(i):
+LEFT(i):
   return 2*i
 
-RIGHT-CHILD(i):
+RIGHT(i):
   return 2*i + 1
 ```
 
@@ -67,7 +67,24 @@ Min-heap operations are identical but implementations are different to maintain
 the min-heap property.
 
 ```
-MAX-HEAPIFY
+MAX-HEAPIFY(A, i)
+  # Given a binary tree and an index, "floats" the value at A[i] down in the
+  # max-heap so that the subtree rooted at index i obeys the max-heap property
+  # Assumes trees rooted at LEFT(i) and RIGHT(i) are max-heaps.
+  left = LEFT(i)
+  right = RIGHT(i)
+
+  if left <= A.heap-size && A[left] > A[right]:
+    largest = left
+  else:
+    largest = right
+
+  if  right <= A.heap-size && A[right] > A[largest]
+    largest = right
+
+  if largest != i
+    exchange A[i] with A[largest]
+    MAX-HEAPIFY(A, largest)
 
 BUILD-MAX-HEAP
 
