@@ -1,4 +1,4 @@
-defmodule Queue do
+defmodule ElixirImpl.DataStructure.Queue do
   @moduledoc """
   Naive queue implementation.
   """
