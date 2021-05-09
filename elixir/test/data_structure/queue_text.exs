@@ -3,5 +3,5 @@ defmodule ElixrImpl.DataStructure.QueueTest do
 
   alias ElixirImpl.DataStructure.Queue
 
-  doctest Stack
+  doctest Queue
 end
