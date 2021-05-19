@@ -21,17 +21,16 @@ defmodule ElixirImpl.DivideAndConquer.MaxContiguousSum do
     right_sum = find(right)
     cross_sum = find_cross_sum(left, right)
 
-    cond do
-      left_sum <= right_sum and cross_sum <= right_sum ->
-        right_sum
-
-      right_sum <= left_sum and cross_sum <= left_sum ->
-        left_sum
-
-      true ->
-        cross_sum
-    end
+    max(left_sum, right_sum, cross_sum)
   end
+
+  defp max(left_sum, right_sum, cross_sum) when left_sum <= right_sum and cross_sum <= right_sum,
+    do: right_sum
+
+  defp max(left_sum, right_sum, cross_sum) when right_sum <= left_sum and cross_sum <= left_sum,
+    do: left_sum
+
+  defp max(_left_sum, _right_sum, cross_sum), do: cross_sum
 
   defp find_cross_sum(left, right) do
     left_sum = left |> ListHelpers.reverse() |> find_sum()
