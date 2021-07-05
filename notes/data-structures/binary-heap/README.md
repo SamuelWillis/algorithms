@@ -86,7 +86,10 @@ MAX-HEAPIFY(A, i)
     exchange A[i] with A[largest]
     MAX-HEAPIFY(A, largest)
 
-BUILD-MAX-HEAP
+BUILD-MAX-HEAP(A):
+  A.heap-size = A.length
+  for i = floor(A.length/2) downto 1
+    MAX-HEAPIFY(A, i)
 
 MAX-HEAP-INSERT
 
@@ -97,3 +100,43 @@ HEAP-INCREASE-KEY
 
 HEAP-MAXIMUM
 ```
+
+## Proofs
+Here are some proofs of the operations
+
+### MAX-HEAPIFY
+Assume precondition of binary trees rooted at `LEFT(i)` and `RIGHT(i)` are max-heaps.
+
+If `A[i]` is larger than `LEFT(i)` and `RIGHT(i)` then we are done as we have a
+max-heap.
+
+Otherwise, one of `LEFT(i)` or `RIGHT(i)` has the largest element and `A[i]` is
+swapped with `A[largest]`.
+Causing node `i` and its children to satisfy the max-heap property.
+
+The node indexed by `largest` now has the value `A[i]` and might violae the
+max-heap property.
+Calling `MAX-HEAPIFY(A, largest)` restores the max-heap property for the tree
+rooted at `largest`.
+
+### BUILD-MAX-HEAP
+Proof is done with a loop invariant:
+
+- At the start of each iteration of the for loop, each node `i+1, i+2, ..., n`
+    is the root of a max-heap
+
+**Intialization** Prior to first loop, `i = floor(n/2)`. Each node `floor(n/2) +
+1, floor(n/2) + 2, ..., n` is a leaf and thus the root of a trivial max-heap.
+
+**Maintenance** Note that the children of node `i` are numbered higher than
+`i`.
+By the loop invariant, they are both roots of max-heaps.
+This is the condition needed for the the `MAX-HEAPIFY` operation to make node
+`i` the root of a max-heap.
+Moreover, `MAX-HEAPIFY` preserves the property that `i+1, i+2, ..., n` are the
+roots of max-heaps.
+Decrementing `i` reestablishes the loop invariant for the next iteration.
+
+**Termination** At termination, `i = 0`. By the invariant, each node `1, 2, ...,
+n` is the root of a max-heap. In particulare, node `1` is.
+
