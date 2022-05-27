@@ -4,15 +4,16 @@ Python code to implement algorithms and data structures
 
 ## Installation
 
-[Asdf](https://github.com/asdf-vm/asdf) is used to manage Elixir version.
-You will need to configure [asdf-python](https://github.com/danhper/asdf-python) to make sure the correct Python version is used.
+[Asdf](https://github.com/asdf-vm/asdf) is used to manage Python version.
 
-1. `asdf install` to get correct Elixir version
+You will need to configure [asdf-python](https://github.com/danhper/asdf-python)
+and run `asdf install` to install correct python version
+
 
 ## Running tests
 
 You can run the tests with:
 
 ```bash
-python -m unittest discover -s tests
+python -m unittest
 ```
